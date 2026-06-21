@@ -24,5 +24,5 @@ elif [[ "$key" == "sha256" ]]; then
         fi
     done
 else
-    echo "Missing argument (key) - Allowed values: 'status' 'last_updated' 'checksums'"
+    echo "Missing argument (key) - Allowed values: 'status' 'last_updated' 'sha256'"
 fi
