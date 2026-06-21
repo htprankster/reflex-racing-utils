@@ -83,4 +83,4 @@ More info on the dedicated branch [README](https://github.com/htprankster/reflex
 
 ## License
 I do not own any rights to [Reflex Arena](https://store.steampowered.com/app/328070/Reflex_Arena).<br>
-All of my scripts are released under license [GNU GPL v3](https://github.com/htprankster/reflex-racing-utils/blob/main/LICENSE.md).
+All of my scripts are released under license [GNU GPL v3](https://github.com/htprankster/reflex-racing-utils/blob/main/LICENSE).
