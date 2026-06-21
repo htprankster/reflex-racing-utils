@@ -1,4 +1,4 @@
-# Reflex Racing Utils [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-222?style=flat-square)](https://www.gnu.org/licenses/gpl-2.0) ![Static Badge](https://img.shields.io/badge/Docker-blue?style=flat-square&logo=docker&logoColor=white) ![Static Badge](https://img.shields.io/badge/NodeJS-v24-green?style=flat-square&logo=node.js&logoColor=white) ![Static Badge](https://img.shields.io/badge/Coverage-90%?style=flat-square)
+# Reflex Racing Utils [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-222?style=flat-square)](https://www.gnu.org/licenses/gpl-2.0) ![Static Badge](https://img.shields.io/badge/Docker-blue?style=flat-square&logo=docker&logoColor=white) ![Static Badge](https://img.shields.io/badge/NodeJS-v24-green?style=flat-square&logo=node.js&logoColor=white)
 Server-side applications for Reflex Arena race mode, in a docker container.<br>
 Allows for retrieving the racing leaderboards and a curated list of RSS feeds.<br>
 [About](#about) / [Requirements](#requirements) / [Build](#build) / [Usage](#usage) / [Datasets](#datasets) / [License](#license)
