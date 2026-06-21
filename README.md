@@ -9,7 +9,7 @@ With the free-to-play release of Reflex Arena and the influx of new players ther
 However, since the game only supports Windows there are limited options when it comes to hosting it.<br>
 This project solves the problem by using containers to download the leaderboards without needing virtualization.
 
-It works by running [Brandon's app](https://github.com/reflexrace/reflexrace.github.io) using a [linuxserver/steam](https://github.com/linuxserver/docker-steam) docker image as base.<br>
+It works by running [Brandon's app](https://github.com/StrafeTheory/ReflexRaceDBDownload/) using a [linuxserver/steam](https://github.com/linuxserver/docker-steam) docker image as base.<br>
 My custom nodejs and bash scripts run on top of that to add new features and apply community moderated rules.
 
 ## Requirements
