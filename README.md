@@ -52,7 +52,7 @@ su - abc -c "cd /config/scripts/injector/ && ./setupInjector.sh"
 yad /config/scripts/injector/steamtinkerlaunch/yad/AppRun
 ```
 11. Close the window, run steamtinkerlaunch from Steam and wait for it to automatically exit without displaying anything.
-12. Open again ```Properties``` and change the Launch Option to ```compat add```.
+12. Open again ```Properties``` and change the Launch Option to ```compat add```
 13. Run steamtinkerlaunch one last time.
 14. Restart your container
 15. There should now be a new entry on the Steam Play compatibility tool called ```Steam Tinker Launch```, replace ```Proton 9.0``` with it under the ```Compatibility``` tab of Reflex Arena to complete your build setup.
