@@ -1,0 +1,10 @@
+[
+  {
+    "title": "Reflex Arena",
+    "url": "https://store.steampowered.com/feeds/news/app/328070",
+    "description": "Changelog and events of Reflex Arena",
+    "rss": "feed-ReflexArena.xml",
+    "limit": 25,
+    "startYear": 2025
+  }
+]

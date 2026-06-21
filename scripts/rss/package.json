@@ -1,0 +1,19 @@
+{
+  "name": "reflex-racing-rss",
+  "version": "1.0.0",
+  "description": "Reflex Racing RSS",
+  "main": "rssFeed.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/htprankster/reflex-racing-utils.git"
+  },
+  "author": "htp",
+  "license": "GPL-3.0-or-later",
+  "homepage": "https://github.com/htprankster/reflex-racing-utils",
+  "devDependencies": {
+    "feed2json": "^0.6.0"
+  }
+}

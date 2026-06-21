@@ -1,0 +1,7 @@
+*steamapi.txt
+*package-lock.json
+**/node_modules
+**/reflexracedbdownload
+**/steamtinkerlaunch
+**/external
+*.zip

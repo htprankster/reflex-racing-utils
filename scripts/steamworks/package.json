@@ -1,0 +1,20 @@
+{
+  "name": "reflex-racing-leaderboards",
+  "version": "1.0.0",
+  "description": "Reflex Racing Leaderboards",
+  "main": "setLeaderboardsFeatures.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/htprankster/reflex-racing-utils.git"
+  },
+  "author": "htp",
+  "license": "GPL-3.0-or-later",
+  "homepage": "https://github.com/htprankster/reflex-racing-utils",
+  "devDependencies": {
+    "obscenity": "^0.4.6"
+  },
+  "type": "module"
+}
