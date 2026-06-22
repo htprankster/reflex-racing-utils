@@ -134,7 +134,7 @@ switch(process.argv[2]) {
         }
         break;
     default:
-        console.error('['+process.argv[1]+'] Missing argument: Allowed values are "filter" -  "activity" - "save" - "extend" - "plstats" - "plstats" - "blacklist"')
+        console.error('['+process.argv[1]+'] Missing argument: Allowed values are "filter" -  "activity" - "save" - "extend" - "plstats" - "blacklist"')
         break;
 }
 
@@ -460,7 +460,8 @@ function addPlayerStats(latestWorkshopInfoObj, latestPlayersInfoObj, latestRecOb
     for(i = 0; i < recordsList.length; i++) {
         if(!recordsGR[recordsList[i].player_id]) { recordsGR[recordsList[i].player_id] = 0; }
         if(!recordsAll[recordsList[i].player_id]) { recordsAll[recordsList[i].player_id] = {avg: [], wrs: 0, records: 0, fav: {}}; }
- 
+        recordsList[i].rank = parseInt(recordsList[i].rank);
+
         //Accumulate ranking scores to calculate global ranks later on
         if(prevMapId !== recordsList[i].map_id) {
             playersCount = findRecordsByMapId(recordsList, recordsList[i].map_id).length;

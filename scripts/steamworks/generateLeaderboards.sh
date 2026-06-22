@@ -19,6 +19,9 @@ ext_maps="$ext_dir/ldb_maps.json"
 ext_records="$ext_dir/ldb_records.json"
 ext_players="$ext_dir/ldb_players.json"
 ext_activity="$ext_dir/ldb_activity.json"
+ext_noedit_maps="$ext_dir/ldb_noedit_maps.json"
+ext_noedit_records="$ext_dir/ldb_noedit_records.json"
+ext_noedit_players="$ext_dir/ldb_noedit_players.json"
 # You can manually edit the files inside /external/leaderboards/custom 
 cst_dir="/external/leaderboards/custom"
 cst_maps="$cst_dir/extra_maps_info.json"
@@ -107,10 +110,13 @@ while true; do
             echo "**** Convert leaderboards to JSON ****"
             sqlite3 -header -json "$ldb" 'select CAST(id AS TEXT) AS id, title, preview_url from tblMap;' > $maps
             echo "Successfully exported maps to $maps"
+            cp -f "$maps" "$ext_noedit_maps"
             sqlite3 -header -json "$ldb" 'select CAST(map_id AS TEXT) as map_id, CAST(player_id AS TEXT) as player_id, rank, score, top_speed, distance from tblRecord;' > $records
             echo "Successfully exported records to $records"
+            cp -f "$records" "$ext_noedit_records"
             sqlite3 -header -json "$ldb" 'select CAST(id AS TEXT) AS id, name from tblPlayer;' > $players
             echo "Successfully exported players to $players"
+            cp -f "$players" "$ext_noedit_players"
 
             echo "**** Apply blacklist ****"
             touch "$blacklist"
