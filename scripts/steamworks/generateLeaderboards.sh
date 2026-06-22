@@ -211,7 +211,6 @@ while true; do
             cp -f "$maps" "$ext_maps"
             cp -f "$records" "$ext_records"
             cp -f "$players" "$ext_players"
-            cp -f "$players" "$ext_players"
             cp -f "$ldb" "$ext_dir/"
             echo "Done."
 
