@@ -63,10 +63,12 @@ yad /config/scripts/injector/steamtinkerlaunch/yad/AppRun
 - To generate the basic original leaderboards: just run Reflex Arena using Steam then check the ```/config/scripts/steamworks/reflexracedbdownload/``` folder for a ```racestats.sqlite``` file.
 - Leaderboards with extended features:
   ```bash
-  cd /config/scripts/steamworks/ && ./generateLeaderboards.sh
+  cd /config/scripts/steamworks/ && ./generateLeaderboards.sh 
+  # recommended for a first time run:
+  cd /config/scripts/steamworks/ && ./generateLeaderboards.sh 1
   ```
   This script saves to the ```/external/leaderboards/latest``` directory.<br>
-  You can also add *1* as argument to force refresh the maps/players info, however this can be expensive in terms of processing time and [api limits](https://steamcommunity.com/dev/apiterms).
+  You can add *1* as argument to force refresh the maps/players info, however this can be expensive in terms of processing time and [api limits](https://steamcommunity.com/dev/apiterms).
 ### RSS
 *(Only requires building the image to access the container, but it can also be ran as standalone on any linux host)*
 - Run the bash script:

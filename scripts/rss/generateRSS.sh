@@ -9,6 +9,8 @@ filename="rss.json"
 streamlist="streamList.json"
 mnt="/external/rss"
 
+mkdir -p "$mnt"
+
 echo "**** Retrieve all RSS feeds to file ****"
 echo $(cat "$streamlist") | jq -c '.[]' | while read -r row; do
   url=$(echo "$row" | jq -r '.url')

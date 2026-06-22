@@ -36,6 +36,13 @@ apikey=$(cat "$steam_web_api")
 # Set 1 as script argument to pull all available data from the steam web api.
 # Note that this is resource expensive, use cron to run this only once a day.
 refresh_all_data="${1:-0}"
+
+mkdir -p "$ext_dir"
+mkdir -p "$cst_dir"
+touch "$ext_maps"
+touch "$ext_records"
+touch "$ext_players"
+touch "$blacklist"
             
 get_player_info() {
     steam_web_api="$1"
@@ -110,37 +117,27 @@ while true; do
             node setLeaderboardsFeatures.js blacklist "$records" "$blacklist"
 
             echo "**** Extend leaderboards data ****"
-            if [ "$refresh_all_data" -eq 1 ]; then
-                echo "Refreshing all players info..."
-                echo $(cat "$players") | jq -r ".[] | .id" | while read -r playerid; do
-                    #Runtime estimate 25 minutes
-                    get_player_info "$apikey" "$playerid" "$cst_players"
-                done
-            
-                echo "Refreshing all maps info..."
-                echo $(cat "$maps") | jq -r ".[] | .id" | while read -r mapid; do
-                    #Runtime estimate 8 minutes
-                    get_map_info "$mapid" "$cst_maps"
-                done
-                /config/scripts/metadata.sh status leaderboards paused
-            fi
-            
-            if [[ -e "$cst_maps" ]]; then
-                echo "Updating map objects with previously saved extra info..."
-                node setLeaderboardsFeatures.js extend "$cst_maps" "$maps"
-            else
+            if [[ ! -e "$cst_maps" ]]; then
                 echo "Creating custom map object file..."
                 echo "[]" > "$cst_maps"
             fi
             
-            if [[ -e "$cst_players" ]]; then
-                echo "Updating player objects with previously saved extra info..."
-                node setLeaderboardsFeatures.js plstats "$cst_maps" "$cst_players" "$records"
-                node setLeaderboardsFeatures.js extend "$cst_players" "$players"
-            else
+            if [[ ! -e "$cst_players" ]]; then
                 echo "Creating custom player object file..."
                 echo "[]" > "$cst_players"
             fi
+            
+            if [[ ! -e "$ext_activity" ]]; then
+                echo "Creating activity object file..."
+                echo "[]" > "$ext_activity"
+            fi
+            
+            echo "Updating map objects with previously saved extra info..."
+            node setLeaderboardsFeatures.js extend "$cst_maps" "$maps"
+            
+            echo "Updating player objects with previously saved extra info..."
+            node setLeaderboardsFeatures.js plstats "$cst_maps" "$cst_players" "$records"
+            node setLeaderboardsFeatures.js extend "$cst_players" "$players"
             
             new_steam_info=0
             echo "Checking for new maps..."
@@ -163,8 +160,23 @@ while true; do
                     echo "ERROR: Could not check info for map $mapid"
                 fi
             done
+
+            if [ "$refresh_all_data" -eq 1 ]; then
+                echo "Refreshing all players info..."
+                echo $(cat "$players") | jq -r ".[] | .id" | while read -r playerid; do
+                    #Runtime estimate 25 minutes
+                    get_player_info "$apikey" "$playerid" "$cst_players"
+                done
             
-            if [[ "$new_steam_info" -gt 0 ]]; then
+                echo "Refreshing all maps info..."
+                echo $(cat "$maps") | jq -r ".[] | .id" | while read -r mapid; do
+                    #Runtime estimate 8 minutes
+                    get_map_info "$mapid" "$cst_maps"
+                done
+                /config/scripts/metadata.sh status leaderboards paused
+            fi
+            
+            if [[ "$new_steam_info" -gt 0 || "$refresh_all_data" -eq 1 ]]; then
                 node setLeaderboardsFeatures.js extend "$cst_maps" "$maps"
                 node setLeaderboardsFeatures.js plstats "$cst_maps" "$cst_players" "$records"
                 node setLeaderboardsFeatures.js extend "$cst_players" "$players"

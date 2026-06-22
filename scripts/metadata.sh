@@ -7,6 +7,10 @@ output="/external/metadata.json"
 key="$1"
 dataset="$2"
 
+if [[ ! -e "$output" ]]; then
+    echo "[{}]" > "$output"
+fi
+
 if [[ "$key" == "status" ]]; then
     status="$3"
     jq --arg key "$key" --arg dataset "$dataset" --arg val "$status" '.[][$key][$dataset] = $val' "$output" > "$output.tmp" && mv "$output.tmp" "$output"
