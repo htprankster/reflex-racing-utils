@@ -68,7 +68,8 @@ yad /config/scripts/injector/steamtinkerlaunch/yad/AppRun
   cd /config/scripts/steamworks/ && ./generateLeaderboards.sh 1
   ```
   This script saves to the ```/external/leaderboards/latest``` directory.<br>
-  You can add *1* as argument to force refresh the maps/players info, however this can be expensive in terms of processing time and [api limits](https://steamcommunity.com/dev/apiterms).
+  You can add *1* as argument to force refresh the maps/players info, however this can be expensive in terms of processing time and [api limits](https://steamcommunity.com/dev/apiterms).<br>
+  Save your [Steam Web API key](https://steamcommunity.com/dev/apikey) in ```/config/scripts/steamworks/steamapi.txt``` to be able to retrieve all players public info.
 ### RSS
 *(Only requires building the image to access the container, but it can also be ran as standalone on any linux host)*
 - Run the bash script:
