@@ -33,9 +33,9 @@ Follow these instructions only once, when setting up the environment for the fir
 ```
 docker build --tag htprankster/reflex-racing-utils .
 ```
-2. Run docker using the built image to be able to work with the WebRTC browser display:
+2. Run docker using the built image to be able to work with the WebRTC browser display: *(edit volume mount paths accordingly)*
 ```bash
-docker run -d --name=reflex-racing-utils --security-opt seccomp=unconfined --security-opt apparmor=unconfined -e PUID=1000 -e PGID=1000 -e TZ=Etc/UTC -p 3000:3000 -p 3001:3001 --shm-size="1gb" -v scripts:/config/scripts -v external:/external --restart unless-stopped htprankster/reflex-racing-utils:latest
+docker run -d --name=reflex-racing-utils --privileged --security-opt seccomp=unconfined --security-opt apparmor=unconfined -e PUID=1000 -e PGID=1000 -e TZ=Etc/UTC -p 3000:3000 -p 3001:3001 --shm-size="1gb" -v ./scripts:/config/scripts -v ./external:/external --restart unless-stopped htprankster/reflex-racing-utils:latest
 ```
 3. Open ```localhost:3000``` on your browser to check the installation process.
 4. From the url shown above, login to a Steam account.

@@ -486,6 +486,9 @@ function addPlayerStats(latestWorkshopInfoObj, latestPlayersInfoObj, latestRecOb
         //Favourite type of racing
         for(let j = 0; j < racingType.length; j++) {
             if(racingType[j] !== '?') {
+                if(!recordsAll[recordsList[i].player_id].fav[racingType[j]]) {
+                    recordsAll[recordsList[i].player_id].fav[racingType[j]] = 0;
+                }
                 recordsAll[recordsList[i].player_id].fav[racingType[j]]++;
             }
         }
@@ -500,6 +503,7 @@ function addPlayerStats(latestWorkshopInfoObj, latestPlayersInfoObj, latestRecOb
     for(i = 0; i < sortedRecords.length; i++) {
         recordsFinal[sortedRecords[i][0]] = {
             globalrank: (i+1),
+            globalscore: sortedRecords[i][1],
             avgrank: (recordsAll[sortedRecords[i][0]].avg.reduce((partialSum, a) => partialSum + a, 0) / recordsAll[sortedRecords[i][0]].avg.length).toFixed(2),
             wrs: recordsAll[sortedRecords[i][0]].wrs,
             records: recordsAll[sortedRecords[i][0]].records,
@@ -510,6 +514,7 @@ function addPlayerStats(latestWorkshopInfoObj, latestPlayersInfoObj, latestRecOb
     for(i = 0; i < playersInfoList.length; i++) {
         let playerObj = (recordsFinal[playersInfoList[i].id] || {
                 globalrank: 0,
+                globalscore: 0,
                 avgrank: 0,
                 wrs: 0,
                 records: 0,
